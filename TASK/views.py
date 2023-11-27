@@ -22,7 +22,7 @@ class TaskView(APIView):
            print(e)
            return Response({
                'data': {},   
-               'message':'something wenfvfgts wrong'},status=status.HTTP_400_BAD_REQUEST)      
+               'message':'something went wrong'},status=status.HTTP_400_BAD_REQUEST)      
             
     
     def post(self,request):
@@ -34,7 +34,7 @@ class TaskView(APIView):
             if not serializer.is_valid():
                 return Response({
                     'data': serializer.errors,   
-                    'message':'something went wffrong'},status=status.HTTP_400_BAD_REQUEST)
+                    'message':'something went wrong'},status=status.HTTP_400_BAD_REQUEST)
             serializer.save()
             return Response({
                     'data': serializer.data,   
@@ -45,7 +45,7 @@ class TaskView(APIView):
            print(e)
            return Response({
                'data': {},   
-               'message':'something wenfvfgts wrong'},status=status.HTTP_400_BAD_REQUEST)  
+               'message':'something went wrong'},status=status.HTTP_400_BAD_REQUEST)  
     
     def patch(self,request):
         try:
@@ -69,7 +69,7 @@ class TaskView(APIView):
             if not serializer.is_valid():
                 return Response({
                     'data': serializer.errors,   
-                    'message':'something went wffrong'},status=status.HTTP_400_BAD_REQUEST)
+                    'message':'something went wrong'},status=status.HTTP_400_BAD_REQUEST)
             serializer.save()
             return Response({
                             'data': serializer.data,   
@@ -79,7 +79,7 @@ class TaskView(APIView):
            print(e)
            return Response({
                'data': {},   
-               'message':'something wenfvfgts wrong'},status=status.HTTP_400_BAD_REQUEST)  
+               'message':'something went wrong'},status=status.HTTP_400_BAD_REQUEST)  
            
     
     def delete(self,request):
@@ -87,7 +87,8 @@ class TaskView(APIView):
             data=request.data
             
             task=Task.objects.filter(uid=data.get('uid'))
-            
+            print(task)
+            print(task[0].user)
             if not task.exists():
                 return Response({
                     'data': {},   
@@ -110,7 +111,7 @@ class TaskView(APIView):
            print(e)
            return Response({
                'data': {},   
-               'message':'something wenfvfgts wrong'},status=status.HTTP_400_BAD_REQUEST)  
+               'message':'something went wrong'},status=status.HTTP_400_BAD_REQUEST)  
                
     
            
